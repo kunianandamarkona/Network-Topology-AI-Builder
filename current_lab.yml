@@ -1,0 +1,28 @@
+name: Cisco_Internal
+mgmt:
+  external-access: false
+  ipv4-subnet: 111.111.111.0/24
+  network: clab_cisco_internal
+topology:
+  kinds:
+    xrd:
+      kind: cisco_xrd
+      image: containers.cisco.com/xrd-prod/xrd-control-plane:latest-24.4
+  nodes:
+    R1:
+      kind: xrd
+      mgmt-ipv4: 111.111.111.111
+    R2:
+      kind: xrd
+      mgmt-ipv4: 111.111.111.112
+    P2:
+      kind: xrd
+      mgmt-ipv4: 111.111.111.113
+    PE2:
+      kind: xrd
+      mgmt-ipv4: 111.111.111.114
+  links:
+    - endpoints: ["R1:Gi0-0-0-1", "R2:Gi0-0-0-1"]
+    - endpoints: ["R2:Gi0-0-0-2", "P2:Gi0-0-0-1"]
+    - endpoints: ["P2:Gi0-0-0-2", "PE2:Gi0-0-0-1"]
+    - endpoints: ["PE2:Gi0-0-0-2", "R1:Gi0-0-0-2"]
