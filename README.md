@@ -20,3 +20,6 @@ Instantly visualize your topology graph and access detailed router information.
 
 Integration with Cisco LLMs:
 Supports advanced YAML generation tailored for Cisco xrd and other supported platforms.
+
+
+N.B containerlab and docker loaded with image should be installed first .
